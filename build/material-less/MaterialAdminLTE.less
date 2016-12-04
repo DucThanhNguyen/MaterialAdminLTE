@@ -1,0 +1,102 @@
+// out: ../../dist/css/MaterialAdminLTE.min.css, compress: true, sourceMap: false
+/*!
+ *   MaterialAdminLTE v1.0
+ *   Author: Nguyen Duc Thanh
+ *	 Website: MaterialAdminLTE <https://github.com/DucThanhNguyen/MaterialAdminLTE>
+ *   License: Open source - MIT
+ *           Please visit http://opensource.org/licenses/MIT for more information
+!*/
+
+// Variables
+@brand-primary: #009688;
+@brand-success: #4caf50;
+@brand-danger: #f44336;
+@brand-warning: #ff5722;
+@brand-info: #03a9f4;
+@body-bg: #EEEEEE;
+@mdb-input-underline-color: #D2D2D2;
+@border-radius-base: 2px;
+@border-radius-small: 1px;
+@mdb-input-font-size-base: 16px;
+@mdb-input-line-height-computed: 20px;
+.shadow-z-2() {
+  box-shadow:
+    0 8px 17px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+//google fonts
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600,700,300italic,400italic,600italic);
+@import url(https://fonts.googleapis.com/css?icon?family=Material+Icons);
+.box{    
+    .shadow-z-2();
+    border-radius: @border-radius-base;
+    border: 0;
+    p {
+        font-weight: 300;
+    }
+    .box-header {
+        padding: 19px;
+        .box-title {
+            font-size: (@mdb-input-font-size-base * 1.5);
+        }
+        .btn, .input-group-btn .btn{
+            padding: 6px 12px;
+        }
+    }
+}
+.callout {
+    .shadow-z-2();
+    border-radius: @border-radius-base;
+    padding: 19px;
+}
+.main-header{
+    .logo{
+        height: 60px;
+        line-height: 60px;
+    }
+    .sidebar-toggle{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    } 
+  #navbar-search-input.form-control {
+    background-color: transparent;
+    border-bottom: 1px solid @mdb-input-underline-color;
+    &:focus,
+    &:active {
+        background-color: transparent;
+        border-bottom: 2px solid @brand-primary;
+    }
+  }  
+}
+.main-sidebar, .left-side, .control-sidebar {
+    padding-top: 60px;
+} 
+.sidebar-form{
+    .form-group{
+        margin-top: 0;
+        padding-bottom: 0;
+        input[type=text]{
+            margin-bottom: 0;
+        }
+    }
+    .input-group-btn {
+        padding: 0;
+        .btn {
+            margin: 0;
+            padding: 6px 12px;
+        }
+    }
+}
+.content-wrapper, .right-side{
+    background-color: @body-bg;
+}
+.wysihtml5-toolbar{
+    .btn {
+            padding: 6px 12px;
+        }
+    .btn, .btn-group{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
