@@ -19,6 +19,11 @@
 @border-radius-small: 1px;
 @mdb-input-font-size-base: 16px;
 @mdb-input-line-height-computed: 20px;
+.shadow-z-1() {
+  box-shadow:
+    0 1px 6px 0 rgba(0, 0, 0, 0.12),
+    0 1px  6px 0 rgba(0, 0, 0, 0.12);
+}
 .shadow-z-2() {
   box-shadow:
     0 8px 17px 0 rgba(0, 0, 0, 0.2),
@@ -80,6 +85,9 @@
     }    
 }
 .main-header{
+    .navbar{
+        .shadow-z-1();
+    }
     .logo{
         height: 60px;
         line-height: 60px;
@@ -100,6 +108,7 @@
 }
 .main-sidebar, .left-side, .control-sidebar {
     padding-top: 60px;
+    .shadow-z-2();
 } 
 .sidebar-form{
     border: none!important;

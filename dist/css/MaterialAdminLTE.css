@@ -59,6 +59,9 @@
 .box .box-footer .input-group .form-group {
   margin-top: 0;
 }
+.main-header .navbar {
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+}
 .main-header .logo {
   height: 60px;
   line-height: 60px;
@@ -80,6 +83,7 @@
 .left-side,
 .control-sidebar {
   padding-top: 60px;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .sidebar-form {
   border: none!important;
