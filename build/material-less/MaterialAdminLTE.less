@@ -40,8 +40,19 @@
         .box-title {
             font-size: (@mdb-input-font-size-base * 1.5);
         }
+        .box-tools{
+            .form-group{
+                margin-top: 0;
+            }
+        }
         .btn, .input-group-btn .btn{
             padding: 6px 12px;
+        }
+    }
+    .input-group{
+        margin-top: 28px;
+        .form-group{
+            margin-top: 0;
         }
     }
 }
@@ -80,10 +91,6 @@
         input[type=text]{
             margin-bottom: 0;
             background-color: transparent!important;
-            &:focus,
-            &:active {
-                background-color: transparent!important;
-            }
         }
     }
     .input-group-btn {        
@@ -92,11 +99,6 @@
             margin: 0;
             padding: 6px 12px;
             background-color: transparent!important;
-            &:focus,
-            &:active,
-            &:hover {
-                background-color: transparent!important;
-            }
         }
     }
 }
@@ -110,10 +112,5 @@
     .btn, .btn-group{
         margin-top: 0;
         margin-bottom: 0;
-    }
-}
-.box-tools{
-    .form-group{
-        margin-top: 0;
     }
 }
