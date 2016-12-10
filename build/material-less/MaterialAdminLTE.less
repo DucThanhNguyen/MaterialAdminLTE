@@ -6,30 +6,13 @@
  *   License: Open source - MIT
  *           Please visit http://opensource.org/licenses/MIT for more information
 !*/
-
-// Variables
-@brand-primary: #009688;
-@brand-success: #4caf50;
-@brand-danger: #f44336;
-@brand-warning: #ff5722;
-@brand-info: #03a9f4;
-@body-bg: #EEEEEE;
-@mdb-input-underline-color: #D2D2D2;
-@border-radius-base: 2px;
-@border-radius-small: 1px;
-@mdb-input-font-size-base: 16px;
-@mdb-input-line-height-computed: 20px;
-.shadow-z-1() {
-  box-shadow:
-    0 1px 6px 0 rgba(0, 0, 0, 0.12),
-    0 1px  6px 0 rgba(0, 0, 0, 0.12);
-}
-.shadow-z-2() {
-  box-shadow:
-    0 8px 17px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
+@import (reference) "../bootstrap-less/mixins.less";
+@import (reference) "../bootstrap-less/variables.less";
+@import (reference) "../bootstrap-less/mixins/buttons.less";
+@import (reference) "../bootstrap-material-design-less/_variables.less";
+@import (reference) "../bootstrap-material-design-less/_mixins.less";
+@import (reference) "../bootstrap-material-design-less/_shadows.less";
+@import "bootstrap-social.less";
 //google fonts
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600,700,300italic,400italic,600italic);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
