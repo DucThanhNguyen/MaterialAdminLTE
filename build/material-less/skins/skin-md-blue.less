@@ -1,0 +1,124 @@
+
+// out: ../../../dist/css/skins/skin-md-blue.min.css, compress: true, sourceMap: false
+/*
+ * Skin: Blue
+ * ----------
+ */
+@import "../../bootstrap-less/mixins.less";
+@import "../../bootstrap-less/variables.less";
+@import "../../less/mixins.less";
+@import "../../bootstrap-material-design-less/_variables.less";
+@import "../../bootstrap-material-design-less/_mixins.less";
+
+@primary-color: @indigo;
+@accent-color: @pink;
+.skin-blue {
+  .navbar {
+      background-color: @primary-color;
+
+      .generic-variations(~".navbar", ~"", @primary-color, {
+        background-color: @variation-color;
+        color: @variation-color-text;
+        // deeply defined to override welljumbo class without !impotant need
+        .navbar-form .form-group input.form-control,
+        .navbar-form input.form-control {
+          .material-placeholder({
+            color: @variation-color-text;
+          });
+        }
+        .dropdown-menu {
+          @media (max-width: @grid-float-breakpoint-max) {
+            .dropdown-header{
+              background-color: lighten(@variation-color,5%);
+            }
+          }
+          li > a {
+            &:hover,
+            &:focus {
+              color: @variation-color;
+              background-color: @grey-200;
+            }
+          }
+          .active > a {
+            &:hover,
+            &:focus {
+              color: @variation-color-text;
+            }
+            background-color: @variation-color;
+            color: @variation-color-text;
+          }
+        }
+      });
+  }
+  .togglebutton {
+    label {
+      input[type=checkbox]:checked {
+        + .toggle {
+          background-color: fade(@primary-color, 50%); // Switch bg on
+        }
+
+        + .toggle:after {
+          background-color: @primary-color; // Handle on
+        }
+
+        + .toggle:active:after {
+          box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px fade(@primary-color, 10%); // Ripple on
+        }
+      }
+    }
+  }
+  .dropdown-menu {
+    li {
+      a:hover {
+        color: @primary-color;
+      }
+    }
+  }
+
+  .form-control,
+  .form-group .form-control {
+    background-image: linear-gradient(@primary-color, @primary-color), linear-gradient(@mdb-input-underline-color, @mdb-input-underline-color);
+  }
+
+  .form-group {
+    &.is-focused {
+      .form-control {
+        background-image: linear-gradient(@primary-color, @primary-color), linear-gradient(@mdb-input-underline-color, @mdb-input-underline-color);
+        
+        .material-input:after {
+          background-color: @primary-color;
+        }
+      }
+
+      label,
+      label.control-label {
+        color: @primary-color;
+      }
+    }
+  }
+
+  .progress {
+    .progress-bar {
+        .variations(~".progress-bar", ~"", background-color, @primary-color);
+    }
+  }
+
+  .nav-tabs {
+    background: @primary-color;
+  }
+
+  .text-primary {
+    color: @primary-color;
+  }
+  .slider {
+    .variations(~".slider", ~".noUi-connect", background-color, @primary-color);
+    .variations(~".slider", ~" .noUi-connect", background-color, @primary-color);
+    .variations(~".slider", ~" .noUi-handle", background-color, @primary-color);
+    .variations(~".slider", ~" .noUi-handle", border-color, @primary-color);
+  }
+  .main-header {
+    li.user-header {
+      background-color: @primary-color;
+    }
+  }
+}
