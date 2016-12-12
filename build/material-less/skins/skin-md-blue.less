@@ -116,6 +116,25 @@
     .variations(~".slider", ~" .noUi-handle", background-color, @primary-color);
     .variations(~".slider", ~" .noUi-handle", border-color, @primary-color);
   }
+  .checkbox, label.checkbox-inline {
+    input[type=checkbox] {
+      &:checked {
+        & + .checkbox-material .check {
+          color: @primary-color;
+          border-color: @primary-color;
+        }
+
+        & + .checkbox-material .check:before {
+          color: @primary-color;
+        }
+      }
+    }
+  }
+  .radio, label.radio-inline {
+    .check {
+      background-color: @primary-color;
+    }
+  }
   .main-header {
     li.user-header {
       background-color: @primary-color;
