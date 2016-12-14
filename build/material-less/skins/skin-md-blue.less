@@ -13,43 +13,29 @@
 @primary-color: @indigo;
 @accent-color: @pink;
 .skin-blue {
-  .navbar {
-      background-color: @primary-color;
-
-      .generic-variations(~".navbar", ~"", @primary-color, {
-        background-color: @variation-color;
-        color: @variation-color-text;
-        // deeply defined to override welljumbo class without !impotant need
-        .navbar-form .form-group input.form-control,
-        .navbar-form input.form-control {
-          .material-placeholder({
-            color: @variation-color-text;
-          });
-        }
-        .dropdown-menu {
-          @media (max-width: @grid-float-breakpoint-max) {
-            .dropdown-header{
-              background-color: lighten(@variation-color,5%);
-            }
-          }
-          li > a {
-            &:hover,
-            &:focus {
-              color: @variation-color;
-              background-color: @grey-200;
-            }
-          }
-          .active > a {
-            &:hover,
-            &:focus {
-              color: @variation-color-text;
-            }
-            background-color: @variation-color;
-            color: @variation-color-text;
-          }
-        }
-      });
+  a, a:hover, a:focus {
+    color: @primary-color;
   }
+  .navbar {
+    background-color: @primary-color;
+    color: rgba(255,255,255,.84);
+    .dropdown-menu {
+      li > a {
+        &:hover,
+        &:focus {
+          color: @primary-color;
+        }
+      }
+      .active > a {
+        &:hover,
+        &:focus {
+          color: @primary-color;
+        }
+        color: @primary-color;
+      }
+    }
+  }
+
   .togglebutton {
     label {
       input[type=checkbox]:checked {
