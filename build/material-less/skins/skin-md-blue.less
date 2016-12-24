@@ -10,6 +10,7 @@
 @import "../../bootstrap-material-design-less/_variables.less";
 @import "../../bootstrap-material-design-less/_mixins.less";
 
+@main-sidebar-color: #EEE;
 @primary-color: @blue;
 @accent-color: @pink;
 .skin-blue {
@@ -127,6 +128,22 @@
     }
     .sidebar-toggle {
         color: inherit;
+    }
+  }
+  .sidebar-menu > li {
+    &.header {      
+      background: darken( @main-sidebar-color, 4%);
+    }    
+    > a {
+      border-left: 3px solid transparent;
+    }    
+    &:hover > a, &.active > a {
+      color: #FFF;
+      background: @primary-color;
+      border-left-color: @primary-color;
+    }
+    > .treeview-menu {      
+      background: @main-sidebar-color;      
     }
   }
 }

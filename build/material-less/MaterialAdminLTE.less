@@ -119,3 +119,19 @@
         margin-bottom: 0;
     }
 }
+@media (min-width: 768px){
+    .sidebar-mini.sidebar-collapse .sidebar-menu {
+        >li{
+            >a>span {
+                border-top-right-radius: 2px;
+            }
+            >.treeview-menu{
+                border-bottom-right-radius: 2px;      
+                .shadow-z-1();
+            }
+        }
+        >li:not(.treeview)>a>span {
+            border-bottom-right-radius: 2px;
+        }
+    }
+}
