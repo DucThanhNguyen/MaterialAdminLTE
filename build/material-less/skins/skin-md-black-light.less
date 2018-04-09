@@ -1,5 +1,6 @@
+// out: ../../../dist/css/skins/skin-md-black-light.min.css, compress: true, sourceMap: false
 /*
- * Skin: Black
+ * Skin: Material Black Light
  * -----------
  */
 @import "../../bootstrap-less/mixins.less";
@@ -61,4 +62,21 @@
   }
   //Create the sidebar skin
   .skin-light-sidebar(#fff);
+
+  .sidebar-form{
+    border: none;
+    margin: 0;
+    input[type="text"], input[type="text"]:focus,.btn,.btn:hover{
+      background-color: transparent;
+      color: #FFF;
+    }
+  }
+  .user-panel{
+    >.info{
+      >a{
+        color: #fff;
+      }
+      color: #fff;
+    }
+  }
 }
