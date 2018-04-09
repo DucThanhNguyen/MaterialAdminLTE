@@ -28,20 +28,20 @@
     padding: 19px;
 }
 .nav-tabs-custom{
-> .nav-tabs{
-    background: none;
-    > li{
-        > a{
-            color:#444!important;
-        }        
-    }
-    > li.active{
-        border-top-color:@brand-primary;
-        > a{
-            color:#000!important;
+    > .nav-tabs{
+        background: none;
+        > li{
+            > a{
+                color:#444!important;
+            }        
+        }
+        > li.active{
+            border-top-color:@brand-primary;
+            > a{
+                color:#000!important;
+            }
         }
     }
-}
 }
 .box{
     .box-header {
@@ -72,6 +72,7 @@
         .shadow-z-1();
     }
     .logo{
+        font-family: @font-family-sans-serif;
         height: 60px;
         line-height: 60px;
     }
@@ -93,6 +94,28 @@
     padding-top: 60px;
     .shadow-z-2();
 } 
+.main-sidebar{
+    .user-panel{
+        background: url(../img/patterns/user-panel-bg_green.jpg) no-repeat;
+        color: #fff;
+        padding: 30px 20px;
+        .image{
+            float: none!important;
+        }
+        .info{
+            position: initial;
+            float: none!important;
+            padding: 10px 0;
+            >p {
+                font-weight: 500;
+            }
+            >a {
+                color: #fff;
+            }
+        }
+    }
+}
+
 .sidebar-form{
     padding: 10px 15px;
     .form-group{
@@ -105,6 +128,11 @@
             margin: 0;
             padding: 0;
         }
+    }
+}
+.control-sidebar{
+    .form-group{
+        margin-top: 0;
     }
 }
 .content-wrapper, .right-side{
@@ -120,18 +148,26 @@
     }
 }
 @media (min-width: 768px){
-    .sidebar-mini.sidebar-collapse .sidebar-menu {
-        >li{
-            >a>span {
-                border-top-right-radius: 2px;
+    .sidebar-mini.sidebar-collapse 
+    {
+        .main-sidebar{
+            .user-panel{
+                padding: 5px;
             }
-            >.treeview-menu{
-                border-bottom-right-radius: 2px;      
-                .shadow-z-1();
+            .sidebar-menu {
+                >li{
+                    >a>span {
+                        border-top-right-radius: 2px;
+                    }
+                    >.treeview-menu{
+                        border-bottom-right-radius: 2px;      
+                        .shadow-z-1();
+                    }
+                }
+                >li:not(.treeview)>a>span {
+                    border-bottom-right-radius: 2px;
+                }
             }
-        }
-        >li:not(.treeview)>a>span {
-            border-bottom-right-radius: 2px;
         }
     }
 }
