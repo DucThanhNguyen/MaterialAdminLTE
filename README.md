@@ -8,16 +8,17 @@ Introduction
 Check out the live preview now and see for yourself.
 
 ## Demo
-Live preview: [https://ducthanhnguyen.github.io/MaterialAdminLTE](https://ducthanhnguyen.github.io/MaterialAdminLTE)
-Screenshot:
+- Live preview: [https://ducthanhnguyen.github.io/MaterialAdminLTE](https://ducthanhnguyen.github.io/MaterialAdminLTE)
+- Screenshot:
 <img src="https://raw.githubusercontent.com/DucThanhNguyen/MaterialAdminLTE/gh-pages/documentation/MaterialAdminLTE_Dashboard.JPG">
 
 ## AdminLTE Documentation & Installation Guide
-Offline documentation is avaiable in the source code at the folder: [/documentation/index.html](https://github.com/DucThanhNguyen/MaterialAdminLTE/blob/master/documentation/index.html)
-Visit the [online documentation](https://adminlte.io/docs) for the most updated guide.
+- Offline documentation is avaiable in the source code at the folder: [/documentation/index.html](https://github.com/DucThanhNguyen/MaterialAdminLTE/blob/master/documentation/index.html)
+- Visit the [online documentation](https://adminlte.io/docs) for the most updated guide.
 
 ## What's changed in AdminLTE
 We tried to make minimal change to the original AdminLTE so that it's easier for upgrading to the new version of it
+
 Here are files and folder that's added to the original source code:
 ```
 MaterialAdminLTE/
@@ -30,16 +31,7 @@ MaterialAdminLTE/
 |       └── skins
 |           ├── all-md-skins.less
 |           ├── skin-md-black.less
-|           ├── skin-md-black-light.less
-|           ├── skin-md-blue.less
-|           ├── skin-md-blue-light.less
-|           ├── skin-md-green.less
-|           ├── skin-md-green-light.less
-|           ├── skin-md-purple.less
-|           ├── skin-md-purple-light.less
-|           ├── skin-md-red.less
-|           ├── skin-md-red-light.less
-|           ├── skin-md-yellow.less
+|           ├── ...
 |           └── skin-md-yellow-light.less
 └── build/
     ├── css/
@@ -62,7 +54,7 @@ MaterialAdminLTE/
 ```
 In html pages of AdminLTE, we added following lines of code
 ```
- <!-- Material Design -->
+  <!-- Material Design -->
   <link rel="stylesheet" href="dist/css/bootstrap-material-design.min.css">
   <link rel="stylesheet" href="dist/css/ripples.min.css">
   <link rel="stylesheet" href="dist/css/MaterialAdminLTE.min.css">
