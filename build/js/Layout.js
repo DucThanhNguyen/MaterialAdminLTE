@@ -1,177 +1,238 @@
-/* Layout()
- * ========
- * Implements AdminLTE layout.
- * Fixes the layout height in case min-height fails.
- *
- * @usage activated automatically upon window load.
- *        Configure any options by passing data-option="value"
- *        to the body tag.
+/**
+ * --------------------------------------------
+ * AdminLTE Layout.js
+ * License MIT
+ * --------------------------------------------
  */
-+function ($) {
-  'use strict';
 
-  var DataKey = 'lte.layout';
+import $ from 'jquery'
 
-  var Default = {
-    slimscroll : true,
-    resetHeight: true
-  };
+/**
+ * Constants
+ * ====================================================
+ */
 
-  var Selector = {
-    wrapper       : '.wrapper',
-    contentWrapper: '.content-wrapper',
-    layoutBoxed   : '.layout-boxed',
-    mainFooter    : '.main-footer',
-    mainHeader    : '.main-header',
-    sidebar       : '.sidebar',
-    controlSidebar: '.control-sidebar',
-    fixed         : '.fixed',
-    sidebarMenu   : '.sidebar-menu',
-    logo          : '.main-header .logo'
-  };
+const NAME = 'Layout'
+const DATA_KEY = 'lte.layout'
+const JQUERY_NO_CONFLICT = $.fn[NAME]
 
-  var ClassName = {
-    fixed         : 'fixed',
-    holdTransition: 'hold-transition'
-  };
+const SELECTOR_HEADER = '.main-header'
+const SELECTOR_MAIN_SIDEBAR = '.main-sidebar'
+const SELECTOR_SIDEBAR = '.main-sidebar .sidebar'
+const SELECTOR_CONTENT = '.content-wrapper'
+const SELECTOR_CONTROL_SIDEBAR_CONTENT = '.control-sidebar-content'
+const SELECTOR_CONTROL_SIDEBAR_BTN = '[data-widget="control-sidebar"]'
+const SELECTOR_FOOTER = '.main-footer'
+const SELECTOR_PUSHMENU_BTN = '[data-widget="pushmenu"]'
+const SELECTOR_LOGIN_BOX = '.login-box'
+const SELECTOR_REGISTER_BOX = '.register-box'
 
-  var Layout = function (options) {
-    this.options      = options;
-    this.bindedResize = false;
-    this.activate();
-  };
+const CLASS_NAME_SIDEBAR_FOCUSED = 'sidebar-focused'
+const CLASS_NAME_LAYOUT_FIXED = 'layout-fixed'
+const CLASS_NAME_CONTROL_SIDEBAR_SLIDE_OPEN = 'control-sidebar-slide-open'
+const CLASS_NAME_CONTROL_SIDEBAR_OPEN = 'control-sidebar-open'
 
-  Layout.prototype.activate = function () {
-    this.fix();
-    this.fixSidebar();
+const Default = {
+  scrollbarTheme: 'os-theme-light',
+  scrollbarAutoHide: 'l',
+  panelAutoHeight: true,
+  loginRegisterAutoHeight: true
+}
 
-    $('body').removeClass(ClassName.holdTransition);
+/**
+ * Class Definition
+ * ====================================================
+ */
 
-    if (this.options.resetHeight) {
-      $('body, html, ' + Selector.wrapper).css({
-        'height'    : 'auto',
-        'min-height': '100%'
-      });
-    }
+class Layout {
+  constructor(element, config) {
+    this._config = config
+    this._element = element
 
-    if (!this.bindedResize) {
-      $(window).resize(function () {
-        this.fix();
-        this.fixSidebar();
-
-        $(Selector.logo + ', ' + Selector.sidebar).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
-          this.fix();
-          this.fixSidebar();
-        }.bind(this));
-      }.bind(this));
-
-      this.bindedResize = true;
-    }
-
-    $(Selector.sidebarMenu).on('expanded.tree', function () {
-      this.fix();
-      this.fixSidebar();
-    }.bind(this));
-
-    $(Selector.sidebarMenu).on('collapsed.tree', function () {
-      this.fix();
-      this.fixSidebar();
-    }.bind(this));
-  };
-
-  Layout.prototype.fix = function () {
-    // Remove overflow from .wrapper if layout-boxed exists
-    $(Selector.layoutBoxed + ' > ' + Selector.wrapper).css('overflow', 'hidden');
-
-    // Get window height and the wrapper height
-    var footerHeight  = $(Selector.mainFooter).outerHeight() || 0;
-    var neg           = $(Selector.mainHeader).outerHeight() + footerHeight;
-    var windowHeight  = $(window).height();
-    var sidebarHeight = $(Selector.sidebar).height() || 0;
-
-    // Set the min-height of the content and sidebar based on
-    // the height of the document.
-    if ($('body').hasClass(ClassName.fixed)) {
-      $(Selector.contentWrapper).css('min-height', windowHeight - footerHeight);
-    } else {
-      var postSetHeight;
-
-      if (windowHeight >= sidebarHeight) {
-        $(Selector.contentWrapper).css('min-height', windowHeight - neg);
-        postSetHeight = windowHeight - neg;
-      } else {
-        $(Selector.contentWrapper).css('min-height', sidebarHeight);
-        postSetHeight = sidebarHeight;
-      }
-
-      // Fix for the control sidebar height
-      var $controlSidebar = $(Selector.controlSidebar);
-      if (typeof $controlSidebar !== 'undefined') {
-        if ($controlSidebar.height() > postSetHeight)
-          $(Selector.contentWrapper).css('min-height', $controlSidebar.height());
-      }
-    }
-  };
-
-  Layout.prototype.fixSidebar = function () {
-    // Make sure the body tag has the .fixed class
-    if (!$('body').hasClass(ClassName.fixed)) {
-      if (typeof $.fn.slimScroll !== 'undefined') {
-        $(Selector.sidebar).slimScroll({ destroy: true }).height('auto');
-      }
-      return;
-    }
-
-    // Enable slimscroll for fixed layout
-    if (this.options.slimscroll) {
-      if (typeof $.fn.slimScroll !== 'undefined') {
-        // Destroy if it exists
-        // $(Selector.sidebar).slimScroll({ destroy: true }).height('auto')
-
-        // Add slimscroll
-        $(Selector.sidebar).slimScroll({
-          height: ($(window).height() - $(Selector.mainHeader).height()) + 'px'
-        });
-      }
-    }
-  };
-
-  // Plugin Definition
-  // =================
-  function Plugin(option) {
-    return this.each(function () {
-      var $this = $(this);
-      var data  = $this.data(DataKey);
-
-      if (!data) {
-        var options = $.extend({}, Default, $this.data(), typeof option === 'object' && option);
-        $this.data(DataKey, (data = new Layout(options)));
-      }
-
-      if (typeof option === 'string') {
-        if (typeof data[option] === 'undefined') {
-          throw new Error('No method named ' + option);
-        }
-        data[option]();
-      }
-    });
+    this._init()
   }
 
-  var old = $.fn.layout;
+  // Public
 
-  $.fn.layout            = Plugin;
-  $.fn.layout.Constuctor = Layout;
+  fixLayoutHeight(extra = null) {
+    const $body = $('body')
+    let controlSidebar = 0
 
-  // No conflict mode
-  // ================
-  $.fn.layout.noConflict = function () {
-    $.fn.layout = old;
-    return this;
-  };
+    if ($body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE_OPEN) || $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_OPEN) || extra === 'control_sidebar') {
+      controlSidebar = $(SELECTOR_CONTROL_SIDEBAR_CONTENT).height()
+    }
 
-  // Layout DATA-API
-  // ===============
-  $(window).on('load', function () {
-    Plugin.call($('body'));
-  });
-}(jQuery);
+    const heights = {
+      window: $(window).height(),
+      header: $(SELECTOR_HEADER).length !== 0 ? $(SELECTOR_HEADER).outerHeight() : 0,
+      footer: $(SELECTOR_FOOTER).length !== 0 ? $(SELECTOR_FOOTER).outerHeight() : 0,
+      sidebar: $(SELECTOR_SIDEBAR).length !== 0 ? $(SELECTOR_SIDEBAR).height() : 0,
+      controlSidebar
+    }
+
+    const max = this._max(heights)
+    let offset = this._config.panelAutoHeight
+
+    if (offset === true) {
+      offset = 0
+    }
+
+    const $contentSelector = $(SELECTOR_CONTENT)
+
+    if (offset !== false) {
+      if (max === heights.controlSidebar) {
+        $contentSelector.css('min-height', (max + offset))
+      } else if (max === heights.window) {
+        $contentSelector.css('min-height', (max + offset) - heights.header - heights.footer)
+      } else {
+        $contentSelector.css('min-height', (max + offset) - heights.header)
+      }
+
+      if (this._isFooterFixed()) {
+        $contentSelector.css('min-height', parseFloat($contentSelector.css('min-height')) + heights.footer)
+      }
+    }
+
+    if (!$body.hasClass(CLASS_NAME_LAYOUT_FIXED)) {
+      return
+    }
+
+    if (offset !== false) {
+      $contentSelector.css('min-height', (max + offset) - heights.header - heights.footer)
+    }
+
+    if (typeof $.fn.overlayScrollbars !== 'undefined') {
+      $(SELECTOR_SIDEBAR).overlayScrollbars({
+        className: this._config.scrollbarTheme,
+        sizeAutoCapable: true,
+        scrollbars: {
+          autoHide: this._config.scrollbarAutoHide,
+          clickScrolling: true
+        }
+      })
+    }
+  }
+
+  fixLoginRegisterHeight() {
+    const $body = $('body')
+    const $selector = $(`${SELECTOR_LOGIN_BOX}, ${SELECTOR_REGISTER_BOX}`)
+
+    if ($selector.length === 0) {
+      $body.css('height', 'auto')
+      $('html').css('height', 'auto')
+    } else {
+      const boxHeight = $selector.height()
+
+      if ($body.css('min-height') !== boxHeight) {
+        $body.css('min-height', boxHeight)
+      }
+    }
+  }
+
+  // Private
+
+  _init() {
+    // Activate layout height watcher
+    this.fixLayoutHeight()
+
+    if (this._config.loginRegisterAutoHeight === true) {
+      this.fixLoginRegisterHeight()
+    } else if (this._config.loginRegisterAutoHeight === parseInt(this._config.loginRegisterAutoHeight, 10)) {
+      setInterval(this.fixLoginRegisterHeight, this._config.loginRegisterAutoHeight)
+    }
+
+    $(SELECTOR_SIDEBAR)
+      .on('collapsed.lte.treeview expanded.lte.treeview', () => {
+        this.fixLayoutHeight()
+      })
+
+    $(SELECTOR_PUSHMENU_BTN)
+      .on('collapsed.lte.pushmenu shown.lte.pushmenu', () => {
+        this.fixLayoutHeight()
+      })
+
+    $(SELECTOR_CONTROL_SIDEBAR_BTN)
+      .on('collapsed.lte.controlsidebar', () => {
+        this.fixLayoutHeight()
+      })
+      .on('expanded.lte.controlsidebar', () => {
+        this.fixLayoutHeight('control_sidebar')
+      })
+
+    $(window).resize(() => {
+      this.fixLayoutHeight()
+    })
+
+    setTimeout(() => {
+      $('body.hold-transition').removeClass('hold-transition')
+    }, 50)
+  }
+
+  _max(numbers) {
+    // Calculate the maximum number in a list
+    let max = 0
+
+    Object.keys(numbers).forEach(key => {
+      if (numbers[key] > max) {
+        max = numbers[key]
+      }
+    })
+
+    return max
+  }
+
+  _isFooterFixed() {
+    return $(SELECTOR_FOOTER).css('position') === 'fixed'
+  }
+
+  // Static
+
+  static _jQueryInterface(config = '') {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _options = $.extend({}, Default, $(this).data())
+
+      if (!data) {
+        data = new Layout($(this), _options)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (config === 'init' || config === '') {
+        data._init()
+      } else if (config === 'fixLayoutHeight' || config === 'fixLoginRegisterHeight') {
+        data[config]()
+      }
+    })
+  }
+}
+
+/**
+ * Data API
+ * ====================================================
+ */
+
+$(window).on('load', () => {
+  Layout._jQueryInterface.call($('body'))
+})
+
+$(`${SELECTOR_SIDEBAR} a`).on('focusin', () => {
+  $(SELECTOR_MAIN_SIDEBAR).addClass(CLASS_NAME_SIDEBAR_FOCUSED)
+})
+
+$(`${SELECTOR_SIDEBAR} a`).on('focusout', () => {
+  $(SELECTOR_MAIN_SIDEBAR).removeClass(CLASS_NAME_SIDEBAR_FOCUSED)
+})
+
+/**
+ * jQuery API
+ * ====================================================
+ */
+
+$.fn[NAME] = Layout._jQueryInterface
+$.fn[NAME].Constructor = Layout
+$.fn[NAME].noConflict = function () {
+  $.fn[NAME] = JQUERY_NO_CONFLICT
+  return Layout._jQueryInterface
+}
+
+export default Layout

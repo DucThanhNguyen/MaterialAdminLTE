@@ -1,176 +1,227 @@
-/* PushMenu()
- * ==========
- * Adds the push menu functionality to the sidebar.
- *
- * @usage: $('.btn').pushMenu(options)
- *          or add [data-toggle="push-menu"] to any button
- *          Pass any option as data-option="value"
+/**
+ * --------------------------------------------
+ * AdminLTE PushMenu.js
+ * License MIT
+ * --------------------------------------------
  */
-+function ($) {
-  'use strict';
 
-  var DataKey = 'lte.pushmenu';
+import $ from 'jquery'
 
-  var Default = {
-    collapseScreenSize   : 767,
-    expandOnHover        : false,
-    expandTransitionDelay: 200
-  };
+/**
+ * Constants
+ * ====================================================
+ */
 
-  var Selector = {
-    collapsed     : '.sidebar-collapse',
-    open          : '.sidebar-open',
-    mainSidebar   : '.main-sidebar',
-    contentWrapper: '.content-wrapper',
-    searchInput   : '.sidebar-form .form-control',
-    button        : '[data-toggle="push-menu"]',
-    mini          : '.sidebar-mini',
-    expanded      : '.sidebar-expanded-on-hover',
-    layoutFixed   : '.fixed'
-  };
+const NAME = 'PushMenu'
+const DATA_KEY = 'lte.pushmenu'
+const EVENT_KEY = `.${DATA_KEY}`
+const JQUERY_NO_CONFLICT = $.fn[NAME]
 
-  var ClassName = {
-    collapsed    : 'sidebar-collapse',
-    open         : 'sidebar-open',
-    mini         : 'sidebar-mini',
-    expanded     : 'sidebar-expanded-on-hover',
-    expandFeature: 'sidebar-mini-expand-feature',
-    layoutFixed  : 'fixed'
-  };
+const EVENT_COLLAPSED = `collapsed${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
 
-  var Event = {
-    expanded : 'expanded.pushMenu',
-    collapsed: 'collapsed.pushMenu'
-  };
+const SELECTOR_TOGGLE_BUTTON = '[data-widget="pushmenu"]'
+const SELECTOR_BODY = 'body'
+const SELECTOR_OVERLAY = '#sidebar-overlay'
+const SELECTOR_WRAPPER = '.wrapper'
 
-  // PushMenu Class Definition
-  // =========================
-  var PushMenu = function (options) {
-    this.options = options;
-    this.init();
-  };
+const CLASS_NAME_COLLAPSED = 'sidebar-collapse'
+const CLASS_NAME_OPEN = 'sidebar-open'
+const CLASS_NAME_IS_OPENING = 'sidebar-is-opening'
+const CLASS_NAME_CLOSED = 'sidebar-closed'
 
-  PushMenu.prototype.init = function () {
-    if (this.options.expandOnHover
-      || ($('body').is(Selector.mini + Selector.layoutFixed))) {
-      this.expandOnHover();
-      $('body').addClass(ClassName.expandFeature);
+const Default = {
+  autoCollapseSize: 992,
+  enableRemember: false,
+  noTransitionAfterReload: true
+}
+
+/**
+ * Class Definition
+ * ====================================================
+ */
+
+class PushMenu {
+  constructor(element, options) {
+    this._element = element
+    this._options = $.extend({}, Default, options)
+
+    if ($(SELECTOR_OVERLAY).length === 0) {
+      this._addOverlay()
     }
 
-    $(Selector.contentWrapper).click(function () {
-      // Enable hide menu when clicking on the content-wrapper on small screens
-      if ($(window).width() <= this.options.collapseScreenSize && $('body').hasClass(ClassName.open)) {
-        this.close();
-      }
-    }.bind(this));
-
-    // __Fix for android devices
-    $(Selector.searchInput).click(function (e) {
-      e.stopPropagation();
-    });
-  };
-
-  PushMenu.prototype.toggle = function () {
-    var windowWidth = $(window).width();
-    var isOpen      = !$('body').hasClass(ClassName.collapsed);
-
-    if (windowWidth <= this.options.collapseScreenSize) {
-      isOpen = $('body').hasClass(ClassName.open);
-    }
-
-    if (!isOpen) {
-      this.open();
-    } else {
-      this.close();
-    }
-  };
-
-  PushMenu.prototype.open = function () {
-    var windowWidth = $(window).width();
-
-    if (windowWidth > this.options.collapseScreenSize) {
-      $('body').removeClass(ClassName.collapsed)
-        .trigger($.Event(Event.expanded));
-    }
-    else {
-      $('body').addClass(ClassName.open)
-        .trigger($.Event(Event.expanded));
-    }
-  };
-
-  PushMenu.prototype.close = function () {
-    var windowWidth = $(window).width();
-    if (windowWidth > this.options.collapseScreenSize) {
-      $('body').addClass(ClassName.collapsed)
-        .trigger($.Event(Event.collapsed));
-    } else {
-      $('body').removeClass(ClassName.open + ' ' + ClassName.collapsed)
-        .trigger($.Event(Event.collapsed));
-    }
-  };
-
-  PushMenu.prototype.expandOnHover = function () {
-    $(Selector.mainSidebar).hover(function () {
-      if ($('body').is(Selector.mini + Selector.collapsed)
-        && $(window).width() > this.options.collapseScreenSize) {
-        this.expand();
-      }
-    }.bind(this), function () {
-      if ($('body').is(Selector.expanded)) {
-        this.collapse();
-      }
-    }.bind(this));
-  };
-
-  PushMenu.prototype.expand = function () {
-    setTimeout(function () {
-      $('body').removeClass(ClassName.collapsed)
-        .addClass(ClassName.expanded);
-    }, this.options.expandTransitionDelay);
-  };
-
-  PushMenu.prototype.collapse = function () {
-    setTimeout(function () {
-      $('body').removeClass(ClassName.expanded)
-        .addClass(ClassName.collapsed);
-    }, this.options.expandTransitionDelay);
-  };
-
-  // PushMenu Plugin Definition
-  // ==========================
-  function Plugin(option) {
-    return this.each(function () {
-      var $this = $(this);
-      var data  = $this.data(DataKey);
-
-      if (!data) {
-        var options = $.extend({}, Default, $this.data(), typeof option == 'object' && option);
-        $this.data(DataKey, (data = new PushMenu(options)));
-      }
-
-      if (option === 'toggle') data.toggle();
-    });
+    this._init()
   }
 
-  var old = $.fn.pushMenu;
+  // Public
 
-  $.fn.pushMenu             = Plugin;
-  $.fn.pushMenu.Constructor = PushMenu;
+  expand() {
+    const $bodySelector = $(SELECTOR_BODY)
 
-  // No Conflict Mode
-  // ================
-  $.fn.pushMenu.noConflict = function () {
-    $.fn.pushMenu = old;
-    return this;
-  };
+    if (this._options.autoCollapseSize) {
+      if ($(window).width() <= this._options.autoCollapseSize) {
+        $bodySelector.addClass(CLASS_NAME_OPEN)
+      }
+    }
 
-  // Data API
-  // ========
-  $(document).on('click', Selector.button, function (e) {
-    e.preventDefault();
-    Plugin.call($(this), 'toggle');
-  });
-  $(window).on('load', function () {
-    Plugin.call($(Selector.button));
-  });
-}(jQuery);
+    $bodySelector.addClass(CLASS_NAME_IS_OPENING).removeClass(`${CLASS_NAME_COLLAPSED} ${CLASS_NAME_CLOSED}`).delay(50).queue(function () {
+      $bodySelector.removeClass(CLASS_NAME_IS_OPENING)
+      $(this).dequeue()
+    })
+
+    if (this._options.enableRemember) {
+      localStorage.setItem(`remember${EVENT_KEY}`, CLASS_NAME_OPEN)
+    }
+
+    $(this._element).trigger($.Event(EVENT_SHOWN))
+  }
+
+  collapse() {
+    const $bodySelector = $(SELECTOR_BODY)
+
+    if (this._options.autoCollapseSize) {
+      if ($(window).width() <= this._options.autoCollapseSize) {
+        $bodySelector.removeClass(CLASS_NAME_OPEN).addClass(CLASS_NAME_CLOSED)
+      }
+    }
+
+    $bodySelector.addClass(CLASS_NAME_COLLAPSED)
+
+    if (this._options.enableRemember) {
+      localStorage.setItem(`remember${EVENT_KEY}`, CLASS_NAME_COLLAPSED)
+    }
+
+    $(this._element).trigger($.Event(EVENT_COLLAPSED))
+  }
+
+  toggle() {
+    if ($(SELECTOR_BODY).hasClass(CLASS_NAME_COLLAPSED)) {
+      this.expand()
+    } else {
+      this.collapse()
+    }
+  }
+
+  autoCollapse(resize = false) {
+    if (!this._options.autoCollapseSize) {
+      return
+    }
+
+    const $bodySelector = $(SELECTOR_BODY)
+
+    if ($(window).width() <= this._options.autoCollapseSize) {
+      if (!$bodySelector.hasClass(CLASS_NAME_OPEN)) {
+        this.collapse()
+      }
+    } else if (resize === true) {
+      if ($bodySelector.hasClass(CLASS_NAME_OPEN)) {
+        $bodySelector.removeClass(CLASS_NAME_OPEN)
+      } else if ($bodySelector.hasClass(CLASS_NAME_CLOSED)) {
+        this.expand()
+      }
+    }
+  }
+
+  remember() {
+    if (!this._options.enableRemember) {
+      return
+    }
+
+    const $body = $('body')
+    const toggleState = localStorage.getItem(`remember${EVENT_KEY}`)
+
+    if (toggleState === CLASS_NAME_COLLAPSED) {
+      if (this._options.noTransitionAfterReload) {
+        $body.addClass('hold-transition').addClass(CLASS_NAME_COLLAPSED).delay(50).queue(function () {
+          $(this).removeClass('hold-transition')
+          $(this).dequeue()
+        })
+      } else {
+        $body.addClass(CLASS_NAME_COLLAPSED)
+      }
+    } else if (this._options.noTransitionAfterReload) {
+      $body.addClass('hold-transition').removeClass(CLASS_NAME_COLLAPSED).delay(50).queue(function () {
+        $(this).removeClass('hold-transition')
+        $(this).dequeue()
+      })
+    } else {
+      $body.removeClass(CLASS_NAME_COLLAPSED)
+    }
+  }
+
+  // Private
+
+  _init() {
+    this.remember()
+    this.autoCollapse()
+
+    $(window).resize(() => {
+      this.autoCollapse(true)
+    })
+  }
+
+  _addOverlay() {
+    const overlay = $('<div />', {
+      id: 'sidebar-overlay'
+    })
+
+    overlay.on('click', () => {
+      this.collapse()
+    })
+
+    $(SELECTOR_WRAPPER).append(overlay)
+  }
+
+  // Static
+
+  static _jQueryInterface(operation) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _options = $.extend({}, Default, $(this).data())
+
+      if (!data) {
+        data = new PushMenu(this, _options)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (typeof operation === 'string' && operation.match(/collapse|expand|toggle/)) {
+        data[operation]()
+      }
+    })
+  }
+}
+
+/**
+ * Data API
+ * ====================================================
+ */
+
+$(document).on('click', SELECTOR_TOGGLE_BUTTON, event => {
+  event.preventDefault()
+
+  let button = event.currentTarget
+
+  if ($(button).data('widget') !== 'pushmenu') {
+    button = $(button).closest(SELECTOR_TOGGLE_BUTTON)
+  }
+
+  PushMenu._jQueryInterface.call($(button), 'toggle')
+})
+
+$(window).on('load', () => {
+  PushMenu._jQueryInterface.call($(SELECTOR_TOGGLE_BUTTON))
+})
+
+/**
+ * jQuery API
+ * ====================================================
+ */
+
+$.fn[NAME] = PushMenu._jQueryInterface
+$.fn[NAME].Constructor = PushMenu
+$.fn[NAME].noConflict = function () {
+  $.fn[NAME] = JQUERY_NO_CONFLICT
+  return PushMenu._jQueryInterface
+}
+
+export default PushMenu
