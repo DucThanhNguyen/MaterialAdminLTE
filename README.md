@@ -9,8 +9,6 @@ Check out the live preview now and see for yourself.
 
 ## Demo
 - Live preview: [https://ducthanhnguyen.github.io/MaterialAdminLTE](https://ducthanhnguyen.github.io/MaterialAdminLTE)
-- Screenshot:
-<img src="https://raw.githubusercontent.com/DucThanhNguyen/MaterialAdminLTE/gh-pages/documentation/MaterialAdminLTE_Dashboard.JPG">
 
 ## AdminLTE Documentation & Installation Guide
 - Offline documentation is avaiable in the source code at the folder: [/documentation/index.html](https://github.com/DucThanhNguyen/MaterialAdminLTE/blob/master/documentation/index.html)
