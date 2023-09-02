@@ -1,13 +1,13 @@
-# Introduction
+# [AdminLTE - Bootstrap 5 Admin Dashboard](https://adminlte.io)
 
 [![npm version](https://img.shields.io/npm/v/admin-lte/latest.svg)](https://www.npmjs.com/package/admin-lte)
 [![Packagist](https://img.shields.io/packagist/v/almasaeed2010/adminlte.svg)](https://packagist.org/packages/almasaeed2010/adminlte)
-[![CDNJS](https://img.shields.io/cdnjs/v/admin-lte.svg)](https://cdnjs.com/libraries/admin-lte)
+[![cdn version](https://data.jsdelivr.com/v1/package/npm/admin-lte/badge)](https://www.jsdelivr.com/package/npm/admin-lte)
+[![Discord Invite](https://img.shields.io/badge/discord-join%20now-green)](https://discord.gg/jfdvjwFqfz)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1277b36b-08f3-43fa-826a-4b4d24614b3c/deploy-status)](https://app.netlify.com/sites/adminlte-v4/deploys)
 
-**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 4.4](https://getbootstrap.com/)** framework and also the JS/jQuery plugin.
+**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 5](https://getbootstrap.com/)** framework and also the JavaScript plugins.
 Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops.
-
-**Preview on [AdminLTE.io](https://adminlte.io/themes/v3)**
 
 ## Looking for Premium Templates?
 
@@ -19,72 +19,7 @@ prices. Visit <https://adminlte.io/premium> for more information.
 **AdminLTE** has been carefully coded with clear comments in all of its JS, SCSS and HTML files.
 SCSS has been used to increase code customizability.
 
-## Installation
-
-There are multiple ways to install AdminLTE.
-
-### Download:
-
-Download from [GitHub releases](https://github.com/ColorlibHQ/AdminLTE/releases).
-
-### Using The Command Line:
-
-_**Important Note**: To install it via npm/Yarn, you need at least Node.js 10 or higher._
-
-- **Via npm**
-
-    ```bash
-    npm install admin-lte@^3.0 --save
-    ```
-
-- **Via Yarn**
-
-    ```bash
-    yarn add admin-lte@^3.0
-    ```
-
-- **Via Composer**
-
-    ```bash
-    composer require "almasaeed2010/adminlte=~3.0"
-    ```
-
-- **Via Git**
-
-    Clone to your machine
-
-    ```bash
-    git clone https://github.com/ColorlibHQ/AdminLTE.git
-    ```
-
-## Documentation
-
-Visit the [online documentation](https://adminlte.io/docs/3.0/) for the most
-updated guide. Information will be added on a weekly basis.
-
-## Browser Support
-
-- IE 10+
-- Firefox (latest)
-- Chrome (latest)
-- Safari (latest)
-- Opera (latest)
-- Microsoft Edge (latest)
-
-## Contributions
-
-Contributions are always **welcome and recommended**! Here is how:
-
-- Fork the repository ([here is the guide](https://help.github.com/articles/fork-a-repo/)).
-- Clone to your machine
-
-    ```bash
-    git clone https://github.com/YOUR_USERNAME/AdminLTE.git
-    ```
-
-- Create a new branch
-- Make your changes
-- Create a pull request
+## Quick start
 
 ### Compile dist files
 
@@ -94,30 +29,25 @@ To compile the dist files you need Node.js/npm, clone/download the repo then:
 2. _Optional:_ `npm run dev` (developer mode, autocompile with browsersync support for live demo)
 3. `npm run production` (compile css/js files)
 
-### Contribution Requirements:
 
-- When you contribute, you agree to give a non-exclusive license to AdminLTE.io to use that contribution in any context as we (AdminLTE.io) see appropriate.
-- If you use content provided by another party, it must be appropriately licensed using an [open source](https://opensource.org/licenses) license.
-- Contributions are only accepted through GitHub pull requests.
-- Finally, contributed code must work in all supported browsers (see above for browser support).
+## Contributing
+
+- Highly welcome.
+- For your extra reference check [AdminLTE v4 Contribution Guide](https://github.com/ColorlibHQ/AdminLTE#contributing)
+- First thing first, you should have bit knowledge about NodeJS.
+- Github Knowledge.
+- Install NodeJS LTS version.
+- Clone this Repository to your machine and change to `master` branch.
+- Go to Cloned Folder.
+- In cli/bash run `npm install` it will install dependency from `package.json`.
+- After installation complets, run `npm run dev`
+- Cool, Send urs changes in PR to `master` branch.
+
 
 ## License
 
 AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](https://opensource.org/licenses/MIT).
 AdminLTE.io reserves the right to change the license of future releases.
-
-## Latest Release
-
-- [AdminLTE 3](https://github.com/ColorlibHQ/AdminLTE/releases/latest)
-
-## Legacy Releases
-
-- [AdminLTE 2](https://github.com/ColorlibHQ/AdminLTE/releases/tag/v2.4.18)
-- [AdminLTE 1](https://github.com/ColorlibHQ/AdminLTE/releases/tag/1.3.1)
-
-## Changelog
-
-Visit the [releases](https://github.com/ColorlibHQ/AdminLTE/releases) page to view the changelog
 
 ## Image Credits
 
