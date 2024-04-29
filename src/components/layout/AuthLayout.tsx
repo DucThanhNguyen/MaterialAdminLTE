@@ -1,5 +1,6 @@
 import { Box, Container, Paper, Stack, Typography } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import { Copyright } from "../Copyright";
 
 export function AuthLayout() {
   return (
@@ -38,6 +39,7 @@ export function AuthLayout() {
           <Paper elevation={2} sx={{ p: 4 }}>
             <Outlet />
           </Paper>
+          <Copyright />
         </Stack>
       </Container>
     </Box>
