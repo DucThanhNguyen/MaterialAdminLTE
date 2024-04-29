@@ -1,6 +1,6 @@
 # Material Admin LTE
 
-This project reimplements [Admin LTE] with [Create React App](https://github.com/facebook/create-react-app) and [MUI](https://mui.com/material-ui/getting-started/).
+This project reimplements [Admin LTE](https://adminlte.io/themes/v3/) with [Create React App](https://github.com/facebook/create-react-app) and [MUI](https://mui.com/material-ui/getting-started/).
 
 - 🔥 Programming language: [TypeScript](https://www.typescriptlang.org)
 - ⚡ Web framework: [React](https://reactjs.org), [Create React App](https://github.com/facebook/create-react-app)
