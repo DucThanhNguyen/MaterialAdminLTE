@@ -1,58 +1,41 @@
-# [AdminLTE - Bootstrap 5 Admin Dashboard](https://adminlte.io)
+# Material Admin LTE
 
-[![npm version](https://img.shields.io/npm/v/admin-lte/latest.svg)](https://www.npmjs.com/package/admin-lte)
-[![Packagist](https://img.shields.io/packagist/v/almasaeed2010/adminlte.svg)](https://packagist.org/packages/almasaeed2010/adminlte)
-[![cdn version](https://data.jsdelivr.com/v1/package/npm/admin-lte/badge)](https://www.jsdelivr.com/package/npm/admin-lte)
-[![Discord Invite](https://img.shields.io/badge/discord-join%20now-green)](https://discord.gg/jfdvjwFqfz)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1277b36b-08f3-43fa-826a-4b4d24614b3c/deploy-status)](https://app.netlify.com/sites/adminlte-v4/deploys)
+This project reimplements [Admin LTE] with [Create React App](https://github.com/facebook/create-react-app) and [MUI](https://mui.com/material-ui/getting-started/).
 
-**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 5](https://getbootstrap.com/)** framework and also the JavaScript plugins.
-Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops.
+- 🔥 Programming language: [TypeScript](https://www.typescriptlang.org)
+- ⚡ Web framework: [React](https://reactjs.org), [Create React App](https://github.com/facebook/create-react-app)
+- 🎨 UI library: [Material UI](https://mui.com/material-ui/getting-started/)
+- 💎 Icons: [Tabler Icons](https://tabler.io/icons)
+- 🚏 Router: [React Router](https://reactrouter.com/en/main/start/overview)
+- 📋 Form: [Formik](https://formik.org/docs/overview)
+- 🚨 Form validation: [Yup](https://github.com/jquense/yup)
+- 🗂 IDE: [VS Code](https://code.visualstudio.com/)
+- 📏 Linter: [ESLint](https://eslint.org/)
+- 💖 Code Formatter: [Prettier](https://prettier.io/)
 
-## Looking for Premium Templates?
+## Available Scripts
 
-AdminLTE.io just opened a new premium templates page. Hand picked to ensure the best quality and the most affordable
-prices. Visit <https://adminlte.io/premium> for more information.
+In the project directory, you can run:
 
-!["AdminLTE Presentation"](https://adminlte.io/AdminLTE3.png "AdminLTE Presentation")
+### `yarn start`
 
-**AdminLTE** has been carefully coded with clear comments in all of its JS, SCSS and HTML files.
-SCSS has been used to increase code customizability.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Quick start
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### Compile dist files
+### `yarn test`
 
-To compile the dist files you need Node.js/npm, clone/download the repo then:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-1. `npm install` (install npm deps)
-2. _Optional:_ `npm run dev` (developer mode, autocompile with browsersync support for live demo)
-3. `npm run production` (compile css/js files)
+### `yarn build`
 
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Contributing
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-- Highly welcome.
-- For your extra reference check [AdminLTE v4 Contribution Guide](https://github.com/ColorlibHQ/AdminLTE#contributing)
-- First thing first, you should have bit knowledge about NodeJS.
-- Github Knowledge.
-- Install NodeJS LTS version.
-- Clone this Repository to your machine and change to `master` branch.
-- Go to Cloned Folder.
-- In cli/bash run `npm install` it will install dependency from `package.json`.
-- After installation complets, run `npm run dev`
-- Cool, Send urs changes in PR to `master` branch.
-
-
-## License
-
-AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](https://opensource.org/licenses/MIT).
-AdminLTE.io reserves the right to change the license of future releases.
-
-## Image Credits
-
-- [Pixeden](http://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd)
-- [Graphicsfuel](https://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/)
-- [Pickaface](https://pickaface.net/)
-- [Unsplash](https://unsplash.com/)
-- [Uifaces](http://uifaces.com/)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

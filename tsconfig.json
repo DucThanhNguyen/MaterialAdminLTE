@@ -1,31 +1,26 @@
 {
-  "root": true,
   "compilerOptions": {
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "module": "esnext",
-    "alwaysStrict": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "strictNullChecks": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["src/html/components/*"],
-    },
-    /* Language and Environment */
-    "target": "es6",
-    "lib": ["es2018", "DOM"],
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
   "include": [
-    "src/ts/**/*"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
+    "src"
   ]
 }
