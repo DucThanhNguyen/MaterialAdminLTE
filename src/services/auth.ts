@@ -1,7 +1,7 @@
 interface AuthProvider {
   isAuthenticated: boolean;
   username: null | string;
-  signin(username: string): Promise<void>;
+  signin(username: string, password: string | null): Promise<void>;
   signout(): Promise<void>;
 }
 
@@ -11,7 +11,7 @@ interface AuthProvider {
 export const fakeAuthProvider: AuthProvider = {
   isAuthenticated: false,
   username: null,
-  async signin(username: string) {
+  async signin(username: string, password: string | null) {
     await new Promise((r) => setTimeout(r, 500)); // fake delay
     fakeAuthProvider.isAuthenticated = true;
     fakeAuthProvider.username = username;

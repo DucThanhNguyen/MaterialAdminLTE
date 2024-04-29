@@ -16,7 +16,7 @@ function AuthStatus() {
   return (
     <div>
       <p>Welcome {user}!</p>
-      <fetcher.Form method="post" action="/logout">
+      <fetcher.Form method="post" action="/auth/logout">
         <button type="submit" disabled={isLoggingOut}>
           {isLoggingOut ? "Signing out..." : "Sign out"}
         </button>
