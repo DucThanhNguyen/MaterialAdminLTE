@@ -15,7 +15,7 @@ import {
   useLocation,
   useNavigation,
 } from "react-router-dom";
-import { fakeAuthProvider } from "../../services/auth";
+import { authProvider } from "../../services/auth";
 
 export function LoginPage() {
   let location = useLocation();
@@ -33,7 +33,6 @@ export function LoginPage() {
       <Typography>Sign in to start your session</Typography>
       <TextField
         margin="normal"
-        required
         fullWidth
         id="email"
         label="Email"
@@ -43,7 +42,6 @@ export function LoginPage() {
       />
       <TextField
         margin="normal"
-        required
         fullWidth
         name="password"
         label="Password"
@@ -74,7 +72,9 @@ export function LoginPage() {
       </Link>
 
       {actionData && actionData.error ? (
-        <p style={{ color: "red" }}>{actionData.error}</p>
+        <Typography variant="body2" color="error" mt={2}>
+          {actionData.error}
+        </Typography>
       ) : null}
     </Form>
   );
@@ -92,9 +92,20 @@ export async function loginAction({ request }: LoaderFunctionArgs) {
     };
   }
 
+  if (!password) {
+    return {
+      error: "You must provide a password to log in",
+    };
+  }
+
   // Sign in and redirect to the proper destination if successful.
   try {
-    await fakeAuthProvider.signin(username, password);
+    const ok = await authProvider.signin(username, password);
+    if (!ok) {
+      return {
+        error: "Invalid login attempt",
+      };
+    }
   } catch (error) {
     // Unused as of now but this is how you would handle invalid
     // username/password combinations - just like validating the inputs
@@ -109,7 +120,7 @@ export async function loginAction({ request }: LoaderFunctionArgs) {
 }
 
 export async function loginLoader() {
-  if (fakeAuthProvider.isAuthenticated) {
+  if (authProvider.isAuthenticated) {
     return redirect("/");
   }
   return null;

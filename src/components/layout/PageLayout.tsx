@@ -16,7 +16,7 @@ export const PageLayout: FC<Props> = ({
     <Stack {...props}>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         {typeof title === "string" ? (
-          <Typography variant="h4" fontWeight={700}>
+          <Typography component="h1" variant="h4" fontWeight={500}>
             {title}
           </Typography>
         ) : (

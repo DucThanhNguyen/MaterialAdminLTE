@@ -1,24 +1,43 @@
+import { users } from "./mockup/users";
+
+export type TUser = {
+  avatar?: string;
+  name?: string;
+  username?: string;
+  email?: string;
+  role?: string;
+};
+
 interface AuthProvider {
   isAuthenticated: boolean;
-  username: null | string;
-  signin(username: string, password: string | null): Promise<void>;
+  user: null | TUser;
+  signin(username: string, password: string | null): Promise<boolean>;
   signout(): Promise<void>;
 }
 
 /**
  * This represents some generic auth provider API, like Firebase.
  */
-export const fakeAuthProvider: AuthProvider = {
+export const authProvider: AuthProvider = {
   isAuthenticated: false,
-  username: null,
+  user: null,
   async signin(username: string, password: string | null) {
     await new Promise((r) => setTimeout(r, 500)); // fake delay
-    fakeAuthProvider.isAuthenticated = true;
-    fakeAuthProvider.username = username;
+    const user = users.find(
+      (x) =>
+        (x.username === username || x.email === username) &&
+        x.password === password,
+    );
+    if (user) {
+      authProvider.isAuthenticated = true;
+      authProvider.user = user;
+      return true;
+    }
+    return false;
   },
   async signout() {
     await new Promise((r) => setTimeout(r, 500)); // fake delay
-    fakeAuthProvider.isAuthenticated = false;
-    fakeAuthProvider.username = "";
+    authProvider.isAuthenticated = false;
+    authProvider.user = null;
   },
 };
