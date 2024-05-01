@@ -14,9 +14,10 @@ import {
 } from "@mui/material";
 import { IconBell, IconMail, IconMenu2 } from "@tabler/icons-react";
 import { FC } from "react";
-import { drawerWidth } from "./AppLayout";
 import { To, useNavigate } from "react-router-dom";
 import { FullscreenButton } from "../FullscreenButton";
+import { drawerWidth } from "./AppLayout";
+import { SearchBox } from "./SearchBox";
 
 type TTopNav = {
   label: string;
@@ -92,8 +93,8 @@ export const AppHeader: FC<Props> = ({
         position="fixed"
         elevation={0}
         sx={{
-          background: (theme) => theme.palette.background.paper,
-          color: (theme) => theme.palette.text.primary,
+          // background: (theme) => theme.palette.background.paper,
+          // color: (theme) => theme.palette.text.primary,
           ...sx,
         }}
         {...props}
@@ -101,7 +102,19 @@ export const AppHeader: FC<Props> = ({
         <Toolbar>
           {menuButton}
           <Box sx={{ flexGrow: 1 }} />
-          <Stack direction="row" spacing={2} flexGrow={0}></Stack>
+          <Stack direction="row" spacing={2} flexGrow={0}>
+            <SearchBox />
+            <IconButton color="inherit">
+              <Badge badgeContent={4} color="error">
+                <IconMail strokeWidth={1.5} />
+              </Badge>
+            </IconButton>
+            <IconButton color="inherit">
+              <Badge badgeContent={17} color="error">
+                <IconBell strokeWidth={1.5} />
+              </Badge>
+            </IconButton>
+          </Stack>
         </Toolbar>
         <Divider />
       </AppBar>
@@ -114,8 +127,8 @@ export const AppHeader: FC<Props> = ({
       position="fixed"
       elevation={0}
       sx={{
-        background: (theme) => theme.palette.background.paper,
-        color: (theme) => theme.palette.text.primary,
+        //background: (theme) => theme.palette.background.paper,
+        //color: (theme) => theme.palette.text.primary,
         ...sx,
       }}
       {...props}
@@ -127,13 +140,14 @@ export const AppHeader: FC<Props> = ({
             <Button
               key={index}
               onClick={() => page.link && navigate(page.link)}
-              sx={{ color: "text.secondary", fontWeight: 400 }}
+              sx={{ color: "inherit", fontWeight: 400 }}
             >
               {page.label}
             </Button>
           ))}
         </Stack>
         <Stack direction="row" spacing={2} flexGrow={0}>
+          <SearchBox />
           <IconButton color="inherit">
             <Badge badgeContent={4} color="error">
               <IconMail strokeWidth={1.5} />
