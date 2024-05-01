@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/MaterialAdminLTE/static/js/main.abf7c747.js",
+    "static/js/488.0874ae72.chunk.js": "/MaterialAdminLTE/static/js/488.0874ae72.chunk.js",
+    "index.html": "/MaterialAdminLTE/index.html",
+    "main.abf7c747.js.map": "/MaterialAdminLTE/static/js/main.abf7c747.js.map",
+    "488.0874ae72.chunk.js.map": "/MaterialAdminLTE/static/js/488.0874ae72.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.abf7c747.js"
+  ]
+}
