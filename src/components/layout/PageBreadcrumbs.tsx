@@ -29,14 +29,14 @@ export const PageBreadcrumbs: FC<Props> = ({ title }) => {
 
   return (
     <Breadcrumbs separator="›" aria-label="breadcrumb">
-      <Link
+      <LinkRouter
         underline="hover"
         sx={{ display: "flex", alignItems: "center" }}
         color="inherit"
-        href="/"
+        to="/"
       >
         <IconHome size={18} strokeWidth={1.5} />
-      </Link>
+      </LinkRouter>
       {pathnames.length === 0 && (
         <Typography color="text.secondary">{title}</Typography>
       )}

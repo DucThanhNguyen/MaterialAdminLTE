@@ -1,12 +1,15 @@
 {
   "name": "material-admin-lte",
   "version": "0.1.0",
+  "homepage": "https://ducthanhnguyen.github.io/MaterialAdminLTE",
   "private": false,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -30,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "eslint": "^9.1.1",
     "eslint-plugin-react": "^7.34.1",
+    "gh-pages": "^6.1.1",
     "globals": "^15.1.0",
     "prettier": "3.2.5",
     "react-scripts": "5.0.1",

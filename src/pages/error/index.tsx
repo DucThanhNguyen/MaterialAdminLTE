@@ -72,7 +72,7 @@ const ErrorPage: FC = () => {
           <Alert severity="error">{error.data.message}</Alert>
         )}
         {isRouteError && error.status === 401 ? (
-          <Button variant="contained" href="/auth/login">
+          <Button variant="contained" onClick={() => navigate("/auth/login")}>
             Sign In
           </Button>
         ) : isRouteError && (error.status === 500 || error.status === 503) ? (

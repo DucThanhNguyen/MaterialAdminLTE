@@ -18,14 +18,14 @@ import {
 import { authProvider } from "../../services/auth";
 
 export function LoginPage() {
-  let location = useLocation();
-  let params = new URLSearchParams(location.search);
-  let from = params.get("from") || "/";
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const from = params.get("from") || "/";
 
-  let navigation = useNavigation();
-  let isLoggingIn = navigation.formData?.get("username") != null;
+  const navigation = useNavigation();
+  const isLoggingIn = navigation.formData?.get("username") != null;
 
-  let actionData = useActionData() as { error: string } | undefined;
+  const actionData = useActionData() as { error: string } | undefined;
 
   return (
     <Form method="post" replace>
@@ -118,7 +118,7 @@ export async function loginAction({ request }: LoaderFunctionArgs) {
     };
   }
 
-  let redirectTo = formData.get("redirectTo") as string | null;
+  const redirectTo = formData.get("redirectTo") as string | null;
   return redirect(redirectTo || "/");
 }
 
