@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/MaterialAdminLTE/static/js/main.7392ed7f.js",
+    "main.js": "/MaterialAdminLTE/static/js/main.b500c8eb.js",
     "static/js/488.0874ae72.chunk.js": "/MaterialAdminLTE/static/js/488.0874ae72.chunk.js",
     "index.html": "/MaterialAdminLTE/index.html",
-    "main.7392ed7f.js.map": "/MaterialAdminLTE/static/js/main.7392ed7f.js.map",
+    "main.b500c8eb.js.map": "/MaterialAdminLTE/static/js/main.b500c8eb.js.map",
     "488.0874ae72.chunk.js.map": "/MaterialAdminLTE/static/js/488.0874ae72.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.7392ed7f.js"
+    "static/js/main.b500c8eb.js"
   ]
 }
