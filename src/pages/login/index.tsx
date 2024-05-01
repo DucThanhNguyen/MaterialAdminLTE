@@ -31,6 +31,9 @@ export function LoginPage() {
     <Form method="post" replace>
       <input type="hidden" name="redirectTo" value={from} />
       <Typography>Sign in to start your session</Typography>
+      <Typography variant="caption" color="text.secondary">
+        Demo account: admin/test
+      </Typography>
       <TextField
         margin="normal"
         fullWidth
