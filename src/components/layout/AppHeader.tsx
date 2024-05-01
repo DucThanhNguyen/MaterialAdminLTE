@@ -1,7 +1,9 @@
 import {
   AppBar,
   AppBarProps,
+  Badge,
   Box,
+  Button,
   Divider,
   IconButton,
   Stack,
@@ -10,9 +12,21 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { IconMenu2 } from "@tabler/icons-react";
+import { IconBell, IconMail, IconMenu2 } from "@tabler/icons-react";
 import { FC } from "react";
 import { drawerWidth } from "./AppLayout";
+import { To, useNavigate } from "react-router-dom";
+import { FullscreenButton } from "../FullscreenButton";
+
+type TTopNav = {
+  label: string;
+  link?: To;
+};
+
+const pages: TTopNav[] = [
+  { label: "Home", link: "/" },
+  { label: "Contact", link: "/contact" },
+];
 
 interface DesktopAppBarProps extends AppBarProps {
   open?: boolean;
@@ -58,6 +72,7 @@ export const AppHeader: FC<Props> = ({
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const navigate = useNavigate();
 
   const menuButton = (
     <IconButton
@@ -107,8 +122,30 @@ export const AppHeader: FC<Props> = ({
     >
       <Toolbar>
         {menuButton}
-        <Box sx={{ flexGrow: 1 }} />
-        <Stack direction="row" spacing={2} flexGrow={0}></Stack>
+        <Stack direction="row" spacing={1} flexGrow={1}>
+          {pages.map((page, index) => (
+            <Button
+              key={index}
+              onClick={() => page.link && navigate(page.link)}
+              sx={{ color: "text.secondary", fontWeight: 400 }}
+            >
+              {page.label}
+            </Button>
+          ))}
+        </Stack>
+        <Stack direction="row" spacing={2} flexGrow={0}>
+          <IconButton color="inherit">
+            <Badge badgeContent={4} color="error">
+              <IconMail strokeWidth={1.5} />
+            </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <Badge badgeContent={17} color="error">
+              <IconBell strokeWidth={1.5} />
+            </Badge>
+          </IconButton>
+          <FullscreenButton />
+        </Stack>
       </Toolbar>
       <Divider />
     </DesktopAppBar>
