@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { AppLayout, AuthLayout } from "./components";
+import ErrorPage from "./pages/error";
 import HomePage from "./pages/home";
 import { loginAction, loginLoader, LoginPage } from "./pages/login";
 import { authProvider } from "./services/auth";
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       };
     },
     Component: AppLayout,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
