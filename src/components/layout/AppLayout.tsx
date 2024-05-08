@@ -176,7 +176,7 @@ export function AppLayout() {
           width: isMobile
             ? "100%"
             : `calc(100% - ${open ? drawerWidth + "px" : theme.spacing(8)})`,
-          height: "100vh",
+          height: "100%",
           transition: theme.transitions.create("width", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
@@ -184,7 +184,7 @@ export function AppLayout() {
         }}
       >
         <Toolbar />
-        <Container sx={{ p: "12px 26px 0" }} maxWidth="xl">
+        <Container sx={{ p: "12px 26px 26px" }} maxWidth="xl">
           <Outlet />
         </Container>
       </Box>

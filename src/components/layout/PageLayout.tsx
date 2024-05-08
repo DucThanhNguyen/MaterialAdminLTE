@@ -1,6 +1,7 @@
 import {
+  Box,
   Stack,
-  StackProps,
+  BoxProps,
   Typography,
   useMediaQuery,
   useTheme,
@@ -8,7 +9,7 @@ import {
 import { FC, ReactNode } from "react";
 import { PageBreadcrumbs } from "./PageBreadcrumbs";
 
-interface Props extends Omit<StackProps, "title"> {
+interface Props extends Omit<BoxProps, "title"> {
   title?: string | ReactNode;
   breadcrumbTitle?: string | ReactNode;
   actions?: ReactNode;
@@ -25,7 +26,7 @@ export const PageLayout: FC<Props> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Stack {...props}>
+    <Box {...props}>
       <Stack
         direction={isMobile && !actions ? "column" : "row"}
         alignItems="center"
@@ -45,6 +46,6 @@ export const PageLayout: FC<Props> = ({
         )}
       </Stack>
       {children}
-    </Stack>
+    </Box>
   );
 };

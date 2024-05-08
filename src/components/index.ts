@@ -5,3 +5,7 @@ export { PageLayout } from "./layout/PageLayout";
 export { SearchBox } from "./layout/SearchBox";
 export { LetterAvatar } from "./LetterAvatar";
 export { FullscreenButton } from "./FullscreenButton";
+export { Chart } from "./widgets/Chart";
+export { Deposits } from "./widgets/Deposits";
+export { Orders } from "./widgets/Orders";
+export { SmallBox } from "./widgets/SmallBox";
