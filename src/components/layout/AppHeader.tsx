@@ -12,11 +12,17 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { IconBell, IconMail, IconMenu2 } from "@tabler/icons-react";
+import {
+  IconMail,
+  IconMenu2,
+  IconReport,
+  IconUsers,
+} from "@tabler/icons-react";
 import { FC } from "react";
 import { To, useNavigate } from "react-router-dom";
 import { FullscreenButton } from "../FullscreenButton";
 import { drawerWidth } from "./AppLayout";
+import { Notifications, TNotification } from "./Notifications";
 import { SearchBox } from "./SearchBox";
 
 type TTopNav = {
@@ -75,6 +81,27 @@ export const AppHeader: FC<Props> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
 
+  const notifications: TNotification[] = [
+    {
+      icon: <IconMail size={20} />,
+      count: 4,
+      text: "new messages",
+      lastUpdated: "3 mins",
+    },
+    {
+      icon: <IconUsers size={20} />,
+      count: 8,
+      text: "friend requests",
+      lastUpdated: "12 hours",
+    },
+    {
+      icon: <IconReport size={20} />,
+      count: 3,
+      text: "new reports",
+      lastUpdated: "2 days",
+    },
+  ];
+
   const menuButton = (
     <IconButton
       color="inherit"
@@ -109,11 +136,7 @@ export const AppHeader: FC<Props> = ({
                 <IconMail strokeWidth={1.5} />
               </Badge>
             </IconButton>
-            <IconButton color="inherit">
-              <Badge badgeContent={17} color="error">
-                <IconBell strokeWidth={1.5} />
-              </Badge>
-            </IconButton>
+            <Notifications items={notifications} />
           </Stack>
         </Toolbar>
         <Divider />
@@ -153,11 +176,7 @@ export const AppHeader: FC<Props> = ({
               <IconMail strokeWidth={1.5} />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
-            <Badge badgeContent={17} color="error">
-              <IconBell strokeWidth={1.5} />
-            </Badge>
-          </IconButton>
+          <Notifications items={notifications} />
           <FullscreenButton />
         </Stack>
       </Toolbar>
