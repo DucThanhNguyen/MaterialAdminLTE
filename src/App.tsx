@@ -11,7 +11,7 @@ import { loginAction, loginLoader, LoginPage } from "./pages/login";
 import { authProvider } from "./services/auth";
 
 // The basename of the app for situations where you can't deploy to the root of the domain, but a sub directory.
-const BASE_NAME =
+export const BASE_NAME =
   window.location.hostname === "ducthanhnguyen.github.io"
     ? "/MaterialAdminLTE"
     : undefined;

@@ -26,6 +26,7 @@ import { drawerWidth } from "./AppLayout";
 import { Notifications, TNotification } from "./Notifications";
 import { SearchBox } from "./SearchBox";
 import { Messages, TMessage } from "./Messages";
+import { BASE_NAME } from "../../App";
 
 type TTopNav = {
   label: string;
@@ -82,7 +83,7 @@ export const AppHeader: FC<Props> = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
-  const basename = useHref("/");
+  const basename = BASE_NAME || "";
 
   const messages: TMessage[] = [
     {
