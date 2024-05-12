@@ -16,6 +16,7 @@ import {
   IconMail,
   IconMenu2,
   IconReport,
+  IconStarFilled,
   IconUsers,
 } from "@tabler/icons-react";
 import { FC } from "react";
@@ -24,6 +25,7 @@ import { FullscreenButton } from "../FullscreenButton";
 import { drawerWidth } from "./AppLayout";
 import { Notifications, TNotification } from "./Notifications";
 import { SearchBox } from "./SearchBox";
+import { Messages, TMessage } from "./Messages";
 
 type TTopNav = {
   label: string;
@@ -81,6 +83,30 @@ export const AppHeader: FC<Props> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
 
+  const messages: TMessage[] = [
+    {
+      avatar: "/img/user1-128x128.jpg",
+      name: "Brad Diesel",
+      message: "Call me whenever you can...",
+      time: "2 mins",
+      action: <IconStarFilled size={18} color="red" />,
+    },
+    {
+      avatar: "/img/user8-128x128.jpg",
+      name: "John Pierce",
+      message: "I got your message bro",
+      time: "4 hours ago",
+      action: <IconStarFilled size={18} color="gray" />,
+    },
+    {
+      avatar: "/img/user3-128x128.jpg",
+      name: "Nora Silvester",
+      message: "The subject goes here",
+      time: "1 day ago",
+      action: <IconStarFilled size={18} color="orange" />,
+    },
+  ];
+
   const notifications: TNotification[] = [
     {
       icon: <IconMail size={20} />,
@@ -131,11 +157,7 @@ export const AppHeader: FC<Props> = ({
           <Box sx={{ flexGrow: 1 }} />
           <Stack direction="row" spacing={2} flexGrow={0}>
             <SearchBox />
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="error">
-                <IconMail strokeWidth={1.5} />
-              </Badge>
-            </IconButton>
+            <Messages items={messages} />
             <Notifications items={notifications} />
           </Stack>
         </Toolbar>
@@ -171,11 +193,7 @@ export const AppHeader: FC<Props> = ({
         </Stack>
         <Stack direction="row" spacing={2} flexGrow={0}>
           <SearchBox />
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="error">
-              <IconMail strokeWidth={1.5} />
-            </Badge>
-          </IconButton>
+          <Messages items={messages} />
           <Notifications items={notifications} />
           <FullscreenButton />
         </Stack>
