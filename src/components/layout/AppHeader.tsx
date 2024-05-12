@@ -20,7 +20,7 @@ import {
   IconUsers,
 } from "@tabler/icons-react";
 import { FC } from "react";
-import { To, useNavigate } from "react-router-dom";
+import { To, useHref, useNavigate } from "react-router-dom";
 import { FullscreenButton } from "../FullscreenButton";
 import { drawerWidth } from "./AppLayout";
 import { Notifications, TNotification } from "./Notifications";
@@ -82,24 +82,25 @@ export const AppHeader: FC<Props> = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
+  const basename = useHref("/");
 
   const messages: TMessage[] = [
     {
-      avatar: "/img/user1-128x128.jpg",
+      avatar: basename + "img/user1-128x128.jpg",
       name: "Brad Diesel",
       message: "Call me whenever you can...",
       time: "2 mins",
       action: <IconStarFilled size={18} color="red" />,
     },
     {
-      avatar: "/img/user8-128x128.jpg",
+      avatar: basename + "img/user8-128x128.jpg",
       name: "John Pierce",
       message: "I got your message bro",
       time: "4 hours ago",
       action: <IconStarFilled size={18} color="gray" />,
     },
     {
-      avatar: "/img/user3-128x128.jpg",
+      avatar: basename + "img/user3-128x128.jpg",
       name: "Nora Silvester",
       message: "The subject goes here",
       time: "1 day ago",
