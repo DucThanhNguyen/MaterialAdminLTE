@@ -42,6 +42,7 @@ export function LoginPage() {
         name="email"
         autoComplete="email"
         autoFocus
+        defaultValue="admin"
       />
       <TextField
         margin="normal"
@@ -51,6 +52,7 @@ export function LoginPage() {
         type="password"
         id="password"
         autoComplete="current-password"
+        defaultValue="test"
       />
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <FormControlLabel
