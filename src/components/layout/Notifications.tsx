@@ -56,7 +56,7 @@ export const Notifications: FC<Props> = ({
         onClick={handleClick}
         {...props}
       >
-        <Badge badgeContent={17} color="error">
+        <Badge badgeContent={total} color="error">
           <IconBell strokeWidth={1.5} />
         </Badge>
       </IconButton>

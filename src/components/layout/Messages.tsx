@@ -48,7 +48,7 @@ export const Messages: FC<Props> = ({ items, color, onClick, ...props }) => {
         onClick={handleClick}
         {...props}
       >
-        <Badge badgeContent={17} color="error">
+        <Badge badgeContent={items.length} color="error">
           <IconMessage strokeWidth={1.5} />
         </Badge>
       </IconButton>
@@ -84,7 +84,7 @@ export const Messages: FC<Props> = ({ items, color, onClick, ...props }) => {
                     >
                       {item.message}
                     </Typography>
-                    {item.time}
+                    {item.time} {item.avatar}
                   </>
                 }
               />
