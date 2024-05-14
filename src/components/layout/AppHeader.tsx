@@ -27,6 +27,7 @@ import { Notifications, TNotification } from "./Notifications";
 import { SearchBox } from "./SearchBox";
 import { Messages, TMessage } from "./Messages";
 import { BASE_NAME } from "../../App";
+import { UserMenu } from "./UserMenu";
 
 type TTopNav = {
   label: string;
@@ -198,6 +199,7 @@ export const AppHeader: FC<Props> = ({
           <Messages items={messages} />
           <Notifications items={notifications} />
           <FullscreenButton />
+          <UserMenu />
         </Stack>
       </Toolbar>
       <Divider />

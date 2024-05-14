@@ -52,17 +52,21 @@ export const NavMenu: FC<Props> = ({
       {...props}
     >
       <List>
-        <ListItem sx={{ pl: isMimi ? 1.5 : undefined, pb: 2 }}>
-          <ListItemAvatar>
-            <LetterAvatar
-              src={user?.avatar}
-              name={user?.name || user?.email}
-              size={40}
-            />
-          </ListItemAvatar>
-          <ListItemText primary={user?.name} />
-        </ListItem>
-        <Divider />
+        {isMobile && (
+          <>
+            <ListItem sx={{ pl: isMimi ? 1.5 : undefined, pb: 2 }}>
+              <ListItemAvatar>
+                <LetterAvatar
+                  src={user?.avatar}
+                  name={user?.name || user?.email}
+                  size={40}
+                />
+              </ListItemAvatar>
+              <ListItemText primary={user?.name} />
+            </ListItem>
+            <Divider />
+          </>
+        )}
         {!isMimi && (
           <ListItem sx={{ pt: 2 }}>
             <OutlinedInput
