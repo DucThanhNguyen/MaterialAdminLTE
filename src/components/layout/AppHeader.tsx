@@ -87,21 +87,21 @@ export const AppHeader: FC<Props> = ({
 
   const messages: TMessage[] = [
     {
-      avatar: basename + "img/user1-128x128.jpg",
+      avatar: basename + "/img/user1-128x128.jpg",
       name: "Brad Diesel",
       message: "Call me whenever you can...",
       time: "2 mins",
       action: <IconStarFilled size={18} color="red" />,
     },
     {
-      avatar: basename + "img/user8-128x128.jpg",
+      avatar: basename + "/img/user8-128x128.jpg",
       name: "John Pierce",
       message: "I got your message bro",
       time: "4 hours ago",
       action: <IconStarFilled size={18} color="gray" />,
     },
     {
-      avatar: basename + "img/user3-128x128.jpg",
+      avatar: basename + "/img/user3-128x128.jpg",
       name: "Nora Silvester",
       message: "The subject goes here",
       time: "1 day ago",

@@ -84,7 +84,7 @@ export const Messages: FC<Props> = ({ items, color, onClick, ...props }) => {
                     >
                       {item.message}
                     </Typography>
-                    {item.time} {item.avatar}
+                    {item.time}
                   </>
                 }
               />
