@@ -9,6 +9,7 @@ import ErrorPage from "./pages/error";
 import HomePage from "./pages/home";
 import { loginAction, loginLoader, LoginPage } from "./pages/login";
 import { authProvider } from "./services/auth";
+import WidgetsPage from "./pages/widgets";
 
 // The basename of the app for situations where you can't deploy to the root of the domain, but a sub directory.
 export const BASE_NAME =
@@ -35,6 +36,11 @@ const router = createBrowserRouter(
           index: true,
           loader: protectedLoader,
           Component: HomePage,
+        },
+        {
+          path: "widgets",
+          loader: protectedLoader,
+          Component: WidgetsPage,
         },
       ],
     },

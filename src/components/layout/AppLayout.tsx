@@ -11,7 +11,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { IconDashboard } from "@tabler/icons-react";
+import { IconDashboard, IconPackage } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import {
   Outlet,
@@ -85,6 +85,11 @@ export function AppLayout() {
       link: "/",
       label: "Dashboard",
       icon: <IconDashboard strokeWidth={1.5} />,
+    },
+    {
+      link: "/widgets",
+      label: "Widgets",
+      icon: <IconPackage strokeWidth={1.5} />,
     },
   ];
 
