@@ -1,13 +1,14 @@
+import { Grid, Paper } from "@mui/material";
+import { amber, blue, green, red } from "@mui/material/colors";
+import {
+  IconChartAreaLineFilled,
+  IconChartPieFilled,
+  IconShoppingCartFilled,
+  IconUserFilled,
+} from "@tabler/icons-react";
 import { FC } from "react";
 import { Chart, Deposits, Orders, PageLayout } from "../../components";
-import { Grid, Paper } from "@mui/material";
 import { SmallBox } from "../../components/widgets/SmallBox";
-import {
-  IconChartPie,
-  IconPresentationAnalytics,
-  IconShoppingBag,
-  IconUserPlus,
-} from "@tabler/icons-react";
 
 const HomePage: FC = () => {
   return (
@@ -15,36 +16,38 @@ const HomePage: FC = () => {
       <Grid container spacing={3} mt={0}>
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <SmallBox
+            elevation={3}
             title="New Orders"
             value={150}
-            icon={<IconShoppingBag size={80} strokeWidth={1} color="gray" />}
+            icon={<IconShoppingCartFilled size={70} />}
+            color={blue[500]}
           />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <SmallBox
+            elevation={3}
             title="Bounce Rate"
             value="53%"
-            icon={<IconChartPie size={80} strokeWidth={1} color="gray" />}
+            icon={<IconChartAreaLineFilled size={70} />}
+            color={green[800]}
           />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <SmallBox
+            elevation={3}
             title="User Registrations"
             value="44"
-            icon={<IconUserPlus size={80} strokeWidth={1} color="gray" />}
+            icon={<IconUserFilled size={70} />}
+            color={amber[600]}
           />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <SmallBox
+            elevation={3}
             title="Unique Visitors"
             value="65"
-            icon={
-              <IconPresentationAnalytics
-                size={80}
-                strokeWidth={1}
-                color="gray"
-              />
-            }
+            icon={<IconChartPieFilled size={70} />}
+            color={red[700]}
           />
         </Grid>
         <Grid item xs={12} md={8} lg={9}>
