@@ -7,8 +7,7 @@ import {
   IconUserFilled,
 } from "@tabler/icons-react";
 import { FC } from "react";
-import { PageLayout } from "../../components";
-import { SmallBox } from "../../components/widgets/SmallBox";
+import { PageLayout, SmallBox } from "../../components";
 
 const WidgetsPage: FC = () => {
   return (

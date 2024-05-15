@@ -7,8 +7,13 @@ import {
   IconUserFilled,
 } from "@tabler/icons-react";
 import { FC } from "react";
-import { Chart, Deposits, Orders, PageLayout } from "../../components";
-import { SmallBox } from "../../components/widgets/SmallBox";
+import {
+  Chart,
+  Deposits,
+  Orders,
+  PageLayout,
+  SmallBox,
+} from "../../components";
 
 const HomePage: FC = () => {
   return (
