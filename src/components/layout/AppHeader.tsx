@@ -1,7 +1,6 @@
 import {
   AppBar,
   AppBarProps,
-  Badge,
   Box,
   Button,
   Divider,
@@ -20,13 +19,13 @@ import {
   IconUsers,
 } from "@tabler/icons-react";
 import { FC } from "react";
-import { To, useHref, useNavigate } from "react-router-dom";
+import { To, useNavigate } from "react-router-dom";
+import { BASE_NAME } from "../../App";
 import { FullscreenButton } from "../FullscreenButton";
 import { drawerWidth } from "./AppLayout";
+import { Messages, TMessage } from "./Messages";
 import { Notifications, TNotification } from "./Notifications";
 import { SearchBox } from "./SearchBox";
-import { Messages, TMessage } from "./Messages";
-import { BASE_NAME } from "../../App";
 import { UserMenu } from "./UserMenu";
 
 type TTopNav = {
