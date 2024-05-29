@@ -11,7 +11,8 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { IconDashboard, IconPackage } from "@tabler/icons-react";
+import { blue, orange, red } from "@mui/material/colors";
+import { IconCircle, IconDashboard, IconPackage } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import {
   Outlet,
@@ -40,7 +41,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
-  width: theme.spacing(8),
+  width: theme.spacing(7),
 });
 
 const DesktopDrawer = styled(Drawer, {
@@ -90,6 +91,25 @@ export function AppLayout() {
       link: "/widgets",
       label: "Widgets",
       icon: <IconPackage strokeWidth={1.5} />,
+    },
+    {
+      label: "LABELS",
+      group: true,
+    },
+    {
+      link: "#",
+      label: "Important",
+      icon: <IconCircle color={red[500]} />,
+    },
+    {
+      link: "#",
+      label: "Warning",
+      icon: <IconCircle color={orange[500]} />,
+    },
+    {
+      link: "#",
+      label: "Informational",
+      icon: <IconCircle color={blue[500]} />,
     },
   ];
 
@@ -180,7 +200,7 @@ export function AppLayout() {
           flexGrow: 1,
           width: isMobile
             ? "100%"
-            : `calc(100% - ${open ? drawerWidth + "px" : theme.spacing(8)})`,
+            : `calc(100% - ${open ? drawerWidth + "px" : theme.spacing(7)})`,
           height: "100%",
           transition: theme.transitions.create("width", {
             easing: theme.transitions.easing.sharp,

@@ -59,8 +59,8 @@ const DesktopAppBar = styled(AppBar, {
     }),
   }),
   ...(!open && {
-    marginLeft: theme.spacing(8),
-    width: `calc(100% - ${theme.spacing(8)})`,
+    marginLeft: theme.spacing(7),
+    width: `calc(100% - ${theme.spacing(7)})`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,

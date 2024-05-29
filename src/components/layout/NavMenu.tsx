@@ -8,6 +8,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  ListSubheader,
   OutlinedInput,
   Tooltip,
 } from "@mui/material";
@@ -93,12 +94,10 @@ const NavMenuItem: FC<{ item: TMenuItem; isMimi?: boolean }> = ({
   const match = useMatch({ path: item.link || "/", end: item.link === "/" });
   const isActive = Boolean(item.link && match);
   const listItem = (
-    <ListItem sx={{ p: isMimi ? 1 : undefined }}>
+    <ListItem disablePadding>
       <ListItemButton
         selected={isActive}
         sx={{
-          p: "4px 12px",
-          borderRadius: 1,
           color: (theme) => (isActive ? theme.palette.primary.main : undefined),
         }}
         onClick={() =>
@@ -119,12 +118,19 @@ const NavMenuItem: FC<{ item: TMenuItem; isMimi?: boolean }> = ({
     </ListItem>
   );
 
-  if (isMimi)
+  if (isMimi) {
+    if (item.divider || item.group) return null;
+
     return (
       <Tooltip title={item.label} placement="right" arrow>
         {listItem}
       </Tooltip>
     );
+  }
+
+  if (item.divider) return <Divider />;
+
+  if (item.group) return <ListSubheader>{item.label}</ListSubheader>;
 
   return listItem;
 };
